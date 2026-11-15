@@ -1,0 +1,13 @@
+[settings]
+idiomatic_version_file_enable_tools = ["java"]
+
+[tools]
+java = "25"
+python = "3.14"
+
+[dotfiles]
+"~/.config/mise" = { mode = "track" }
+"~/.zshrc" = { mode = "track" }
+
+[bootstrap.services.mise-history]
+builtin = "history-watch"
