@@ -1,0 +1,10 @@
+#:schema https://github.com/joshmedeski/sesh/raw/main/sesh.schema.json
+
+cache = true
+
+# ==============================================================================
+# WILDCARD WORKSPACES (Applies to any sub-folder inside your Projects folder)
+# ==============================================================================
+[[wildcard]]
+pattern = "~/workspace/TML/*"
+startup_command = "bash $HOME/.local/bin/jvm-dev"
