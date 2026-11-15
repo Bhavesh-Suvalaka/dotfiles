@@ -1,0 +1,7 @@
+eval "$(/opt/homebrew/bin/brew shellenv)"
+export BASH_COMPLETION_COMPAT_DIR="/opt/homebrew/etc/bash_completion.d"
+[[ -r "/opt/homebrew/etc/profile.d/bash_completion.sh" ]] && . "/opt/homebrew/etc/profile.d/bash_completion.sh"
+source ~/.aliases
+
+# Created by `pipx` on 2024-05-04 11:45:19
+export PATH="$PATH:${HOME}/.local/bin"
