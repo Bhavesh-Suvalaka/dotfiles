@@ -1,0 +1,77 @@
+# ==============================================================================
+# PART 1: GLOBAL LANGUAGE SERVER DEFINITIONS
+# ==============================================================================
+
+[language-server.jdtls.config]
+extendedClientCapabilities = { classFileContentsSupport = true }
+java = { inlayHints = { parameterNames = { enabled = "all" } } }
+
+[language-server.metals]
+command = "metals"
+
+[language-server.pyright.config.python.analysis]
+typeCheckingMode = "basic"
+autoImportCompletions = true
+
+[language-server.ruff]
+command = "ruff"
+args = ["server"]
+
+[language-server.terraform-ls]
+command = "terraform-ls"
+args = ["serve"]
+
+
+# ==============================================================================
+# PART 2: LANGUAGE CONFIGURATIONS & OVERRIDES
+# ==============================================================================
+
+# --- JAVA ---
+[[language]]
+name = "java"
+scope = "source.java"
+language-servers = [ "jdtls" ]
+indent = { tab-width = 4, unit = " " }
+
+# --- SCALA ---
+[[language]]
+name = "scala"
+scope = "source.scala"
+language-servers = [ "metals" ]
+
+# --- KOTLIN ---
+[[language]]
+name = "kotlin"
+scope = "source.kotlin"
+language-servers = [ "kotlin-language-server" ]
+
+# --- PYTHON ---
+[[language]]
+name = "python"
+scope = "source.python"
+language-servers = [ "ruff", "pyright" ]
+auto-format = true
+
+[language.formatter]
+command = "sh"
+args = ["-c", "ruff check --quiet --select I --fix - | ruff format -"]
+
+[language.debugger]
+name = "debugpy"
+transport = "stdio"
+command = "python3"
+args = ["-m", "debugpy.adapter"]
+
+[[language.debugger.templates]]
+name = "source"
+request = "launch"
+completion = [ { name = "entrypoint", completion = "filename", default = "." } ]
+args = { mode = "debug", program = "{0}" }
+
+# --- TERRAFORM ---
+[[language]]
+name = "terraform"
+scope = "source.terraform"
+file-types = ["tf", "tfvars"]
+language-servers = [ "terraform-ls" ]
+auto-format = true

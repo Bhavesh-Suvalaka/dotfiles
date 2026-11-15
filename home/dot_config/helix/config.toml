@@ -1,0 +1,22 @@
+theme = "catppuccin_mocha" # Change to your favorite theme
+
+[editor]
+line-number = "relative"   # Uses relative numbers for faster vertical jumps
+true-color = true          # Forces Ghostty to render exact, rich theme colors
+cursorline = true          # Highlights the line your cursor is currently on
+
+[editor.cursor-shape]
+insert = "bar"             # Thin vertical bar when typing
+normal = "block"           # Standard block when navigating
+select = "underline"       # Underline when text is selected
+
+[editor.statusline]
+# Strips out useless noise from the bottom bar for a cleaner look
+left = ["mode", "spinner", "file-name", "file-modification-indicator"]
+right = ["diagnostics", "selections", "position", "file-encoding"]
+mode.normal = "NORMAL"
+mode.insert = "INSERT"
+mode.select = "SELECT"
+
+[editor.lsp]
+display-messages = true    # Shows clean, inline lint errors and type hints
